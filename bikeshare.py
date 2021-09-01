@@ -210,7 +210,7 @@ def user_stats(df, city):
 def display_raw_data(df):
     """
     Asks user if they want to see 5 lines of raw data.
-    Returns the 5 lines of raw data if user inputs `yes`. Iterate until user response with a `no`
+    Returns the 5 lines of raw data if user inputs `yes`. Iterate until user response deviates from 'yes'.
     """
     rawdata = input('\nDo you want to see the (filtered) raw data? If yes, please enter yes:\n')
     rowcount = 0
