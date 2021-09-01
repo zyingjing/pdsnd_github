@@ -207,21 +207,28 @@ def user_stats(df, city):
     print('-'*40)
 
 
+def display_raw_data(df):
+    """
+    Asks user if they want to see 5 lines of raw data.
+    Returns the 5 lines of raw data if user inputs `yes`. Iterate until user response with a `no`
+    """
+    rawdata = input('\nDo you want to see the (filtered) raw data? If yes, please enter yes:\n')
+    rowcount = 0
+    while rawdata.lower() == 'yes':
+        if (rowcount + 5) < df.index.size:
+            print(df[rowcount:rowcount + 5])
+            rowcount += 5
+        else:
+            print('You reached the end of the table!')
+            break
+        rawdata = input('Do you want to see 5 more rows? If yes, please enter yes:\n')
+
 def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
         
-        rawdata = input('\nDo you want to see the (filtered) raw data? If yes, please enter yes:\n')
-        rowcount = 0
-        while rawdata.lower() == 'yes':
-            if (rowcount + 5) < df.index.size:
-                print(df[rowcount:rowcount + 5])
-                rowcount += 5
-            else:
-                print('You reached the end of the table!')
-                break
-            rawdata = input('Do you want to see 5 more rows? If yes, please enter yes:\n')
+        display_raw_data(df)
 
         time_stats(df)
         station_stats(df)
