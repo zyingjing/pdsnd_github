@@ -94,8 +94,8 @@ def load_data(city, month, day):
 
     # extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
-    df['day_of_week'] = df['Start Time'].dt.weekday_name       # this is used in pandas version 0.22
-    #df['day_of_week'] = df['Start Time'].dt.day_name()          # this works starting from pandas version 0.23
+    #df['day_of_week'] = df['Start Time'].dt.weekday_name       # this is used in pandas version 0.22
+    df['day_of_week'] = df['Start Time'].dt.day_name()          # this works starting from pandas version 0.23
 
 
     # filter by month if applicable
